@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <style>
+        *{
+            background-color: black;
+        }
+.main{
+    border: solid;
+    width: 60%;
+    height: 83vh;
+    margin: auto;
+  margin-top: 20px;
+}
+#btn{
+    padding: 15px;
+            font-size: 1rem;
+            margin-left: 100vh;
+            margin-top: 15px;
+            background-color: gray;
+            border: none;
+            color: rgb(56, 46, 46);
+            width: 10%;
+            border-radius: 20px;
+}
+img{
+     width: 100%;
+     height: 82vh;
+      background-size: contain;
+      border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+  <img src="img-1.jpg" id="img">
+    </div>
+    <button id="btn">START</button>
+</body>
+<script>
+    let img = document.getElementById("img")
+    let imgarr = ["img-1.jpg","img-2.jpg","img-3.jpg","img-4.jpg"]
+    let l = imgarr.length
+    a = 0
+    function imgfunc(params) {
+        if (a<l) {
+            img.src=imgarr[a]
+            a++
+        }if (a==l) {
+            a=0
+        }
+    }
+    let btn = document.getElementById("btn")
+    let condition = true;
+    let int;
+    btn.addEventListener("click",()=>{
+        if (condition) {
+            int = setInterval(imgfunc,1000)
+            condition=false;
+            btn.innerText="STOP"
+        }else{
+            condition=true;
+            clearInterval(int)
+            btn.innerText="START"
+        }
+    })
+</script>
+</html>
