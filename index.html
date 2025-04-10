@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.main {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  border: 2px solid white;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+}
+
+#btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  margin-top: 20px;
+  background-color: gray;
+  border: none;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#btn:hover {
+  background-color: #555;
+}
+
+@media (max-width: 600px) {
+  #btn {
+    width: 80%;
+    font-size: 1.1rem;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div class="main">
+  <img src="img-2.jpg" id="img">
+    </div>
+    <button id="btn">START</button>
+</body>
+<script>
+    let img = document.getElementById("img")
+    let imgarr = ["img-2.jpg","img-3.jpg","img-4.jpg"]
+    let l = imgarr.length
+    a = 0
+    function imgfunc(params) {
+        if (a<l) {
+            img.src=imgarr[a]
+            a++
+        }if (a==l) {
+            a=0
+        }
+    }
+    let btn = document.getElementById("btn")
+    let condition = true;
+    let int;
+    btn.addEventListener("click",()=>{
+        if (condition) {
+            int = setInterval(imgfunc,1000)
+            condition=false;
+            btn.innerText="STOP"
+        }else{
+            condition=true;
+            clearInterval(int)
+            btn.innerText="START"
+        }
+    })
+</script>
+</html>
